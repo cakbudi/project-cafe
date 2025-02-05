@@ -3,11 +3,11 @@
     <x-slot name="header">
         <div class="flex gap-2 justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Data User
+                Data Kategori
            </h2> 
 
            <div class="flex gap-2">
-            <a class="btn btn-primary" href="{{ route('user.create') }}">
+            <a class="btn btn-primary" href="{{ route('kategori.create') }}">
                 Create
             </a>
            </div>
@@ -26,22 +26,18 @@
                         <tr>
                             <th class="">No</th>
                             <th class="text-start">Nama</th>
-                            <th class="text-start">Email</th>
-                            <th class=""></th>
                             <th class=""></th>
                         </tr>
                     </thead>
                     <tbody>
-                         @foreach ( $users as $user )
+                         @foreach ( $kategori as $kategori )
                              <tr>
                                 <td class="">{{ $loop->iteration }}</td>
-                                <td class="">{{ $user->name }}</td>
-                                <td class="">{{ $user->email }}</td>
-                                <td class="">{{ $user->getRolenames() }}</td>
+                                <td class="">{{ $kategori->nama }}</td>
                                 <td class="text-center"> 
-                                    <a href="{{ route('user.show',$user->id_text) }}" title="Info"><i class="fa-solid fa-info-circle text-info cursor-pointer"></i></a>
-                                    <a href="{{ route('user.edit',$user->id_text) }}" title="Edit"><i class="fa-solid fa-pencil text-warning cursor-pointer"></i></a>
-                                    <i class="fa-solid fa-trash text-danger cursor-pointer" data-id="{{ $user->id }}" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
+                                    <a href="{{ route('kategori.show',$kategori->id) }}" title="Edit"><i class="fa-solid fa-info-circle text-info cursor-pointer"></i></a>
+                                    <a href="{{ route('kategori.edit',$kategori->id) }}" title="Edit"><i class="fa-solid fa-pencil text-warning cursor-pointer"></i></a>
+                                    <i class="fa-solid fa-trash text-danger cursor-pointer" data-id="{{ $kategori->id }}" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>
                                 </td>
                              </tr>
                          @endforeach
@@ -64,7 +60,7 @@
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
            
-            <form action="{{ route('user.delete') }}" method="post">
+            <form action="{{ route('kategori.delete') }}" method="post">
                 @csrf
             <div class="modal-body flex flex-column align-items-center gap-2">
                 <input type="hidden" id="id_delete" name="id" />

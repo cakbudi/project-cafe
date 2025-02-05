@@ -15,6 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @role('super admin|manager')
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs(['user.index','user.create'])">
+                        {{ __('User') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('kategori.index')" :active="request()->routeIs(['kategori.index','kategori.create','kategori.show'])">
+                        {{ __('Kategori') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('menu.index')" :active="request()->routeIs(['menu.index','menu.create'])">
+                        {{ __('Menu') }}
+                    </x-nav-link>
+                    @endrole
+                    {{-- <x-nav-link :href="route('role-permission.index')" :active="request()->routeIs(['role-permission.index'])">
+                        {{ __('Role & Permission') }}
+                    </x-nav-link> --}}
                 </div>
             </div>
 
