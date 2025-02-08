@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
                 $table->id();
-                $table->date('tgl');
+                $table->datetime('tgl_jam');
                 $table->integer('user_id');
                 $table->text('customer');
                 $table->enum('dine_in',['0','1'])->default(1);

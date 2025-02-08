@@ -27,6 +27,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::resource('/menu', App\Http\Controllers\MenuController::class)->middleware('role:super admin')->except(['destroy','show']);    
     Route::post('/menu/delete', [App\Http\Controllers\MenuController::class,'delete'])->middleware('role:super admin')->name('menu.delete');    
+   
+
+    Route::resource('/order', App\Http\Controllers\OrderController::class)->middleware('role:super admin')->except(['destroy','show']);    
+    Route::get('/order/kasir/print', [App\Http\Controllers\OrderController::class,'print'])->name('order.kasir.print');    
+
+   
 
     
 });
@@ -35,6 +41,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // KASIR
 Route::prefix('kasir')->middleware(['auth', 'verified','role:kasir'])->group(function () {
     Route::get('/order',App\Livewire\Order::class)->name('kasir.order');
+    
+    Route::get('/dataorder',App\Livewire\DataOrder::class)->name('kasir.dataorder');
 });
 
 

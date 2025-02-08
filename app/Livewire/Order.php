@@ -43,12 +43,12 @@ class Order extends Component
         
       
     }
-
-    public function saveOrder(){
+    
+        public function saveOrder(){
         if(COUNT(Cart::where('user_id',Auth::user()->id)->get()) > 0){
             $cart =  Cart::where('user_id',Auth::user()->id)->first();
             $save = ModelsOrder::create([
-                'tgl' => date('Y-m-d'),
+                'tgl' => $cart->tgl_jam,
                 'user_id' => $cart->user_id,
                 'customer' => $cart->customer,
                 'meja' => $cart->meja,

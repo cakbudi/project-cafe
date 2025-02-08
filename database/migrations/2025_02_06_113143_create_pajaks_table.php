@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
+        Schema::create('pajaks', function (Blueprint $table) {
             $table->id();
-            $table->datetime('tgl_jam');
-            $table->integer('user_id');
-            $table->foreignId('menu_id')->constrained();
-            $table->integer('jumlah');
-            $table->text('customer');
-            $table->enum('dine_in',['0','1'])->default(1);
-            $table->text('meja');
+            $table->decimal('pajak',3,2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::dropIfExists('pajaks');
     }
 };

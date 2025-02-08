@@ -10,7 +10,7 @@ class Order extends Model
     //
     use SoftDeletes;
     protected $fillable =[
-        'tgl',
+        'tgl_jam',
         'user_id',
         'customer',
         'dine_in',

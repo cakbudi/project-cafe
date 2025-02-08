@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Cart as ModelsCart;
+use App\Models\pajak;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\On; 
@@ -15,9 +16,11 @@ class Cart extends Component
  
     #[Validate('required')] 
     public $meja = '';
- 
-    public $carts = '';
+    
+    public $pajak = '';
+    public $carts = [];
     public $cart_status = '';
+    public $total = '-';
  
     #[On('refresh-cart')] 
     public function refreshCart()
@@ -28,11 +31,14 @@ class Cart extends Component
             $this->cart_status = '';
             $this->customer = '';
             $this->meja = '';
+            $this->pajak = '';
         }else{
             $getCart = ModelsCart::where('user_id',Auth::user()->id)->first();
+            $pajak = Pajak::whereNull('deleted_at')->first();
             $this->cart_status = $getCart->dine_in;
             $this->customer = $getCart->customer;
             $this->meja = $getCart->meja;
+            $this->pajak = $pajak->pajak;
         }
 
 
@@ -46,11 +52,14 @@ class Cart extends Component
             $this->cart_status = '';
             $this->customer = '';
             $this->meja = '';
+            $this->pajak = '';
         }else{
             $getCart = ModelsCart::where('user_id',Auth::user()->id)->first();
+            $pajak = Pajak::whereNull('deleted_at')->first();
             $this->cart_status = $getCart->dine_in;
             $this->customer = $getCart->customer;
             $this->meja = $getCart->meja;
+            $this->pajak = $pajak->pajak;
         }
 
          

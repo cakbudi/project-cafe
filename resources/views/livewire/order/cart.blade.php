@@ -79,8 +79,22 @@
             </div>
             
             @empty
-            <p class="alert alert-info">Tidak ada data order ! </p>
+            <div class="d-flex justify-content-center" style="padding-top:50px">
+              <i class="fa fa-shopping-cart text-light" style="font-size: 100px"></i>
+            </div>
             @endforelse
+
+            @if (COUNT($carts) > 0)
+            
+            <div class="d-flex justify-content-between w-100 align-items-center px-3">
+              <span>Total</span>
+              <span>Rp {{ $total }}</span>
+            </div> 
+            <div class="d-flex justify-content-between w-100 align-items-center px-3">
+              <span>Pajak</span>
+              <span>{{ $pajak }} %</span>
+            </div> 
+            @endif
 
         </div>
       </div>

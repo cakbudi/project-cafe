@@ -18,6 +18,7 @@ class Menu extends Component
         $ceksama = Cart::where(['menu_id'=>$id, 'user_id' => Auth::user()->id])->get();
         if(COUNT($ceksama) < 1){
           Cart::create([
+                'tgl_jam'=>date('Y-m-d H:i:s'),
                 'user_id'=>Auth::user()->id,
                 'menu_id'=>$id,
                 'jumlah'=>1,

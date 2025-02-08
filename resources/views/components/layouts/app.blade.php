@@ -19,6 +19,7 @@
         </style>
     </head>
     <body>
+     
         <div class="container-md">  
             {{ $slot }}
         @livewire('navigasi')
@@ -30,9 +31,18 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>           
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            @if (session('success')) toastr.success("{{ session('success') }}") @endif
-            @if (session('delete')) toastr.success("{{ session('delete') }}") @endif
-            @if (session('failed')) toastr.info("{{ session('failed') }}") @endif
+         
+         
+            document.addEventListener('livewire:init', () => {
+                    Livewire.on('toast', (event) => {
+                      toastr.info(event.message)
+
+                    });
+            });
+                
+        
+        
+ 
             $(()=>{
                 $('.select').select2({
                 theme: 'bootstrap-5'

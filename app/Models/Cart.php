@@ -8,6 +8,7 @@ class Cart extends Model
 {
     //
     protected $fillable=[
+            'tgl_jam',
             'user_id',
             'menu_id',
             'jumlah',
