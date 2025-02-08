@@ -20,7 +20,7 @@ class DataOrder extends Component
     }
 
     public function mount(){
-        $this->orders = Order::where('tgl','LIKE',date('Y-m-d').'%')->get();
+        $this->orders = Order::where('tgl_jam','LIKE',date('Y-m-d').'%')->get();
        
     }
      
